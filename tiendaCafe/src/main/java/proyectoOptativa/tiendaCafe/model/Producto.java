@@ -1,5 +1,6 @@
 package proyectoOptativa.tiendaCafe.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Producto {
@@ -7,7 +8,7 @@ public class Producto {
     private String sku;
     private String nombre;
     private String descripcion;
-    private Double precio;
+    private BigDecimal precio;
     private Integer stock;
     private String imagenUrl;
     private boolean activo;
@@ -19,7 +20,7 @@ public class Producto {
 
     public Producto() {}
 
-    public Producto(Integer id, String sku, String nombre, String descripcion, Double precio, Integer stock, String imagenUrl, boolean activo, boolean destacado, LocalDate fechaCreacion, String categoria, String tipo, Integer cantidad) {
+    public Producto(Integer id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, boolean activo, boolean destacado, LocalDate fechaCreacion, String categoria, String tipo, Integer cantidad) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -67,11 +68,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 

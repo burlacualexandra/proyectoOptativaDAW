@@ -8,13 +8,13 @@ public class Usuario {
     private String email;
     private String nombre;
     private String direccionEnvio;
-    private Enum rol;
+    private Rol rol;
     private LocalDate fechaAlta;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String uid, String email, String nombre, String direccionEnvio, Enum rol, LocalDate fechaAlta) {
+    public Usuario(Integer id, String uid, String email, String nombre, String direccionEnvio, Rol rol, LocalDate fechaAlta) {
         this.id = id;
         this.uid = uid;
         this.email = email;
@@ -64,11 +64,11 @@ public class Usuario {
         this.direccionEnvio = direccionEnvio;
     }
 
-    public Enum getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(Enum rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
