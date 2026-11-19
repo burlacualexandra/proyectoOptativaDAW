@@ -1,13 +1,16 @@
 package proyectoOptativa.tiendaCafe.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Carrito {
     private Usuario usuario;
-    private LineaPedido lineaPedido;
+    private List<LineaPedido> lineaPedido = new ArrayList<>();
 
     public Carrito() {
     }
 
-    public Carrito(Usuario usuario, LineaPedido lineaPedido) {
+    public Carrito(Usuario usuario, List<LineaPedido> lineaPedido) {
         this.usuario = usuario;
         this.lineaPedido = lineaPedido;
     }
@@ -20,11 +23,11 @@ public class Carrito {
         this.usuario = usuario;
     }
 
-    public LineaPedido getLineas() {
+    public List<LineaPedido> getLineaPedido() {
         return lineaPedido;
     }
 
-    public void setLineas(LineaPedido lineaPedido) {
+    public void setLineaPedido(List<LineaPedido> lineaPedido) {
         this.lineaPedido = lineaPedido;
     }
 }

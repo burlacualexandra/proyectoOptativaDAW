@@ -1,18 +1,20 @@
 package proyectoOptativa.tiendaCafe.model;
 
+import java.math.BigDecimal;
+
 public class LineaPedido {
     private Producto producto;
     private String nombreProducto;
-    private Double precioUnitario;
-    private Double cantidad;
-    private Double subtotal;
+    private BigDecimal precioUnitario;
+    private Integer cantidad;
+    private BigDecimal subtotal;
 
     public LineaPedido() {}
 
-    public LineaPedido(Producto producto, String nombreProducto, Double precioUnitario, Double cantidad, Double subtotal) {
+    public LineaPedido(Producto producto, String nombreProducto, BigDecimal precioUnitario, Integer cantidad, BigDecimal subtotal) {
         this.producto = producto;
-        this.nombreProducto = nombreProducto;
-        this.precioUnitario = precioUnitario;
+        this.nombreProducto = producto.getNombre();
+        this.precioUnitario = producto.getPrecio();
         this.cantidad = cantidad;
         this.subtotal = subtotal;
     }
@@ -33,27 +35,27 @@ public class LineaPedido {
         this.nombreProducto = nombreProducto;
     }
 
-    public Double getPrecioUnitario() {
+    public BigDecimal getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(Double precioUnitario) {
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
-    public Double getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Double cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public Double getSubtotal() {
-        return subtotal;
+    public BigDecimal getSubtotal() {
+        return precioUnitario.multiply(BigDecimal.valueOf(cantidad));
     }
 
-    public void setSubtotal(Double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 }
