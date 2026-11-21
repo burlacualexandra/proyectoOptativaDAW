@@ -14,13 +14,13 @@ public class Producto {
     private boolean activo;
     private boolean destacado;
     private LocalDate fechaCreacion;
-    private String categoria;
-    private String tipo;
-    private Integer cantidad;
+    private Integer categoriaId;
+    private TipoProducto tipoProducto;
+    private Integer gramos;
 
     public Producto() {}
 
-    public Producto(Integer id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, boolean activo, boolean destacado, LocalDate fechaCreacion, String categoria, String tipo, Integer cantidad) {
+    public Producto(Integer id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, boolean activo, boolean destacado, LocalDate fechaCreacion, Integer categoriaId, TipoProducto tipoProducto, Integer gramos) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -31,9 +31,9 @@ public class Producto {
         this.activo = activo;
         this.destacado = destacado;
         this.fechaCreacion = fechaCreacion;
-        this.categoria = categoria;
-        this.tipo = tipo;
-        this.cantidad = cantidad;
+        this.categoriaId = categoriaId;
+        this.tipoProducto = tipoProducto;
+        this.gramos = gramos;
     }
 
     public Integer getId() {
@@ -116,28 +116,28 @@ public class Producto {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public Integer getCategoriaId() {
+        return categoriaId;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoriaId(Integer categoriaId) {
+        this.categoriaId = categoriaId;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoProducto(String tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
+    public Integer getGramos() {
+        return gramos;
     }
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setGramos(Integer gramos) {
+        this.gramos = gramos;
     }
 }
 
