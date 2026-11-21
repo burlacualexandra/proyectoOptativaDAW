@@ -124,11 +124,11 @@ public class Producto {
         this.categoriaId = categoriaId;
     }
 
-    public String getTipoProducto() {
+    public TipoProducto getTipoProducto() {
         return tipoProducto;
     }
 
-    public void setTipoProducto(String tipoProducto) {
+    public void setTipoProducto(TipoProducto tipoProducto) {
         this.tipoProducto = tipoProducto;
     }
 
@@ -139,5 +139,6 @@ public class Producto {
     public void setGramos(Integer gramos) {
         this.gramos = gramos;
     }
+
 }
 

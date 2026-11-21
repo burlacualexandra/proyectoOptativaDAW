@@ -15,7 +15,7 @@ public class ProductoService {
 
     //generamos un SKU unico - las tres primeras letras en mayúsculas, con lso gramos que tiene, si no tiene que ponga 0, y el id
     private String generarSku(ProductoCrearDTO dto, int id) {
-        return String.format("CAF-%s-%d-%03d", dto.getTipo().substring(0, 3).toUpperCase(),
+        return String.format("CAF-%s-%d-%03d", dto.getTipoProducto().substring(0, 3).toUpperCase(),
                 dto.getGramos() != null ? dto.getGramos() : 0, id);
     }
 
@@ -59,7 +59,7 @@ public class ProductoService {
         productoNuevo.setDescripcion(producto.getDescripcion());
         productoNuevo.setImagenUrl(producto.getImagenUrl());
         productoNuevo.setGramos(producto.getGramos());
-        productoNuevo.setTipo(producto.getTipo());
+        productoNuevo.setTipoProducto(producto.getTipoProducto());
         productoNuevo.setId(siguienteId++);
         productoNuevo.setActivo(true);
         productoNuevo.setFechaCreacion(LocalDate.now());
@@ -98,7 +98,7 @@ public class ProductoService {
         existe.setPrecio(producto.getPrecio());
         existe.setStock(producto.getStock());
         existe.setImagenUrl(producto.getImagenUrl());
-        existe.setTipo(producto.getTipo());
+        existe.setTipoProducto(producto.getTipoProducto());
         existe.setActivo(producto.isActivo());
         existe.setGramos(producto.getGramos());
 

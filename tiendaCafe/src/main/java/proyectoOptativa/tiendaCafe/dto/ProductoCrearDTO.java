@@ -1,5 +1,7 @@
 package proyectoOptativa.tiendaCafe.dto;
 
+import proyectoOptativa.tiendaCafe.model.TipoProducto;
+
 import java.math.BigDecimal;
 
 public class ProductoCrearDTO {
@@ -12,7 +14,7 @@ public class ProductoCrearDTO {
     private String imagenUrl;
     private boolean destacado;
     private Integer gramos;
-    private String tipo;
+    private TipoProducto tipoProducto;
 
     public ProductoCrearDTO(){}
 
@@ -26,7 +28,7 @@ public class ProductoCrearDTO {
         this.imagenUrl = imagenUrl;
         this.destacado = destacado;
         this.gramos = gramos;
-        this.tipo = tipo;
+        this.tipoProducto = tipoProducto;
     }
 
     public String getSku() {
@@ -101,11 +103,12 @@ public class ProductoCrearDTO {
         this.gramos= gramos;
     }
 
-    public String getTipo() {
-        return tipo;
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
+
 }
