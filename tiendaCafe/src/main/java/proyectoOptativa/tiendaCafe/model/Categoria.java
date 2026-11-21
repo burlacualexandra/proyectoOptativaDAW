@@ -1,17 +1,21 @@
 package proyectoOptativa.tiendaCafe.model;
 
+import javax.imageio.plugins.tiff.TIFFDirectory;
+
 public class Categoria {
     private Integer id;
     private String nombre;
     private String descripcion;
+    private TipoProducto tipoProducto;
 
     public Categoria() {
     }
 
-    public Categoria(Integer id, String nombre, String descripcion) {
+    public Categoria(Integer id, String nombre, String descripcion, TipoProducto tipoProducto) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.tipoProducto = tipoProducto;
     }
 
     public Integer getId() {
@@ -36,5 +40,13 @@ public class Categoria {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 }
