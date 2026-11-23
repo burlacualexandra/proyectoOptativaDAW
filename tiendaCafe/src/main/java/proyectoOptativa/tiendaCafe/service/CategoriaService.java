@@ -1,12 +1,13 @@
 package proyectoOptativa.tiendaCafe.service;
 
+import org.springframework.stereotype.Service;
 import proyectoOptativa.tiendaCafe.dto.CategoriaDTO;
 import proyectoOptativa.tiendaCafe.model.Categoria;
 import proyectoOptativa.tiendaCafe.model.TipoProducto;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class CategoriaService {
 
     // creamos la lista de las categorias

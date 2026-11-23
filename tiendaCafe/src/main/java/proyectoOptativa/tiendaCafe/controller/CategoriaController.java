@@ -1,7 +1,27 @@
 package proyectoOptativa.tiendaCafe.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import proyectoOptativa.tiendaCafe.model.Categoria;
 import proyectoOptativa.tiendaCafe.service.CategoriaService;
+import proyectoOptativa.tiendaCafe.service.ProductoService;
 
+import java.util.List;
+
+@RestController
 public class CategoriaController {
+    @Autowired
+    private CategoriaService categoriaService;
+    private ProductoService productoService;
 
+    public CategoriaController(CategoriaService categoriaService, ProductoService productoService) {
+        this.categoriaService = categoriaService;
+        this.productoService = productoService;
+    }
+  /*  @GetMapping("/api/categorias")
+    public ResponseEntity<List<Categoria>> listarCategorias() {}
+
+   */
 }
