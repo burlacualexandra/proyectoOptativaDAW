@@ -1,9 +1,9 @@
 package proyectoOptativa.tiendaCafe.model;
 
 public enum EstadoPedido {
-    PENDENTE,
+    PENDIENTE,
     PAGADO,
     ENVIADO,
-    ENRTEGADO,
+    ENRTREGADO,
     CANCELADO
 }

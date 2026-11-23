@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class VerPedidoDTO {
-    private Integer codigo;
+    private String codigo;
     private LocalDate fecha;
     private String sku;
     private Integer cantidad;
@@ -20,7 +20,7 @@ public class VerPedidoDTO {
     public VerPedidoDTO() {
     }
 
-    public VerPedidoDTO(Integer codigo, LocalDate fecha, String sku, Integer cantidad, String nombre, String descripcion, BigDecimal total, BigDecimal subtotal, BigDecimal gastosEnvio, EstadoPedido estadoPedido) {
+    public VerPedidoDTO(String codigo, LocalDate fecha, String sku, Integer cantidad, String nombre, String descripcion, BigDecimal total, BigDecimal subtotal, BigDecimal gastosEnvio, EstadoPedido estadoPedido) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.sku = sku;
@@ -33,11 +33,11 @@ public class VerPedidoDTO {
         this.estadoPedido = estadoPedido;
     }
 
-    public Integer getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

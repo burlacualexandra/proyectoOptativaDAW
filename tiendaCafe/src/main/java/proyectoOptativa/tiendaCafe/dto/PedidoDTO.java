@@ -1,6 +1,5 @@
 package proyectoOptativa.tiendaCafe.dto;
 
-import proyectoOptativa.tiendaCafe.model.EstadoPedido;
 import proyectoOptativa.tiendaCafe.model.Usuario;
 
 import java.math.BigDecimal;
