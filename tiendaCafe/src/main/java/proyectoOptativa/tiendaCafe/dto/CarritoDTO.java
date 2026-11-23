@@ -1,16 +1,17 @@
 package proyectoOptativa.tiendaCafe.dto;
 
+import proyectoOptativa.tiendaCafe.model.LineaPedido;
 import proyectoOptativa.tiendaCafe.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarritoDTO {
     private Usuario usuario;
-    private List<LineaPedidoDTO> lineaPedido = new ArrayList<>();
+    private List<LineaPedido> lineaPedido = new ArrayList<>();
 
     public CarritoDTO() {}
 
-    public CarritoDTO(Usuario usuario, List<LineaPedidoDTO> lineaPedido) {
+    public CarritoDTO(Usuario usuario, List<LineaPedido> lineaPedido) {
         this.usuario = usuario;
         this.lineaPedido = lineaPedido;
     }
@@ -23,11 +24,11 @@ public class CarritoDTO {
         this.usuario = usuario;
     }
 
-    public List<LineaPedidDTO> getLineaPedido() {
+    public List<LineaPedido> getLineaPedido() {
         return lineaPedido;
     }
 
-    public void setLineaPedido(List<LineaPedidoDTO> lineaPedido) {
+    public void setLineaPedido(List<LineaPedido> lineaPedido) {
         this.lineaPedido = lineaPedido;
     }
 }
