@@ -3,6 +3,8 @@ package proyectoOptativa.tiendaCafe.service;
 import org.springframework.stereotype.Service;
 import proyectoOptativa.tiendaCafe.dto.ProductoCrearDTO;
 import proyectoOptativa.tiendaCafe.model.Producto;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class ProductoService {
 
     //generamos un SKU unico - las tres primeras letras en mayúsculas, con lso gramos que tiene, si no tiene que ponga 0, y el id
     private String generarSku(ProductoCrearDTO dto, int id) {
-        return String.format("CAF-%s-%d-%03d", dto.getTipoProducto().substring(0, 3).toUpperCase(),
+        return String.format("CAF-%s-%d-%03d", dto.getTipoProducto().name().substring(0, 3).toUpperCase(),
                 dto.getGramos() != null ? dto.getGramos() : 0, id);
     }
 
@@ -50,8 +52,35 @@ public class ProductoService {
 
     //Crear producto
     public Producto crearProducto(ProductoCrearDTO producto) {
+
+        if(producto.getNombre() == null || producto.getNombre().isBlank()){
+            return null;
+        }
+
+        if(producto.getTipoProducto() == null){
+            return null;
+        }
+
+        String skuNuevo = generarSku(producto, siguienteId);
+        for(Producto p : productos){
+            if(p.getSku().equals(skuNuevo)){
+                return null;
+            }
+        }
+        if(producto.getPrecio() == null || producto.getPrecio().compareTo(BigDecimal.ZERO) <= 0){
+            return null;
+        }
+        if(producto.getStock() == null || producto.getStock() < 0){
+            return null;
+        }
+        if(producto.getGramos() != null && producto.getGramos() <= 0){
+            return null;
+        }
+
+
         Producto productoNuevo = new Producto();
-        productoNuevo.setSku(generarSku(producto, siguienteId));
+
+        productoNuevo.setSku(skuNuevo);
         productoNuevo.setNombre(producto.getNombre());
         productoNuevo.setPrecio(producto.getPrecio());
         productoNuevo.setStock(producto.getStock());
@@ -62,17 +91,23 @@ public class ProductoService {
         productoNuevo.setTipoProducto(producto.getTipoProducto());
         productoNuevo.setId(siguienteId++);
         productoNuevo.setActivo(true);
+        productoNuevo.setDestacado(producto.isDestacado());
         productoNuevo.setFechaCreacion(LocalDate.now());
+
         productos.add(productoNuevo);
         return productoNuevo;
     }
 
     //buscar producto por ID
     public Producto buscarProductoPorId(Integer id) {
+        if(id == null){
+            return null;
+        }
         for (Producto producto : productos) {
-            if (producto.getId().equals(id)) {
+            if(producto.getId().equals(id)){
                 return producto;
             }
+
         }
         return null;
     }
@@ -94,12 +129,28 @@ public class ProductoService {
         if (existe == null) {
             return null;
         }
+        if(producto.getNombre() == null || producto.getNombre().isBlank()){
+            return null;
+        }
+        if(producto.getTipoProducto() == null){
+            return null;
+        }
+        if(producto.getPrecio() == null || producto.getPrecio().compareTo(BigDecimal.ZERO) <= 0){
+            return null;
+        }
+        if(producto.getStock() == null || producto.getStock() < 0){
+            return null;
+        }
+        if(producto.getGramos() != null && producto.getGramos() <= 0){
+            return null;
+        }
+        existe.setNombre(producto.getNombre());
         existe.setDescripcion(producto.getDescripcion());
+        existe.setCategoriaId(producto.getCategoriaId());
+        existe.setDestacado(producto.isDestacado());
         existe.setPrecio(producto.getPrecio());
         existe.setStock(producto.getStock());
         existe.setImagenUrl(producto.getImagenUrl());
-        existe.setTipoProducto(producto.getTipoProducto());
-        existe.setActivo(producto.isActivo());
         existe.setGramos(producto.getGramos());
 
         return existe;
@@ -108,7 +159,7 @@ public class ProductoService {
     //retirar producto
     public boolean retirarProducto(Integer id) {
         Producto existe = buscarProductoPorId(id);
-        if (existe == null) {
+        if (existe == null || !existe.isActivo()) {
             return false;
         }
         existe.setActivo(false);
@@ -118,9 +169,10 @@ public class ProductoService {
     // modificar stock
     public Integer modificarStock(Integer id, Integer cantidad) {
         Producto encontrado = buscarProductoPorId(id);
-        if (encontrado == null || cantidad == 0) {
+        if (encontrado == null || cantidad == null || cantidad == 0 || !encontrado.isActivo()) {
             return null;
         }
+
         int nuevoStock = encontrado.getStock() + cantidad;
         if(nuevoStock < 0){
             return null;
@@ -132,7 +184,7 @@ public class ProductoService {
     // activar un producto retirado
     public boolean reactivarProducto(Integer id) {
         Producto encontrado = buscarProductoPorId(id);
-        if(encontrado == null){
+        if(encontrado == null || encontrado.isActivo()){
                 return false;
             }
         encontrado.setActivo(true);
