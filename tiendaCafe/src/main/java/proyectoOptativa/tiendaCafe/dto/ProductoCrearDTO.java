@@ -15,10 +15,11 @@ public class ProductoCrearDTO {
     private boolean destacado;
     private Integer gramos;
     private TipoProducto tipoProducto;
+    private String formato;
 
     public ProductoCrearDTO(){}
 
-    public ProductoCrearDTO(String sku, String nombre, BigDecimal precio, Integer stock, Integer categoriaId, String descripcion, String imagenUrl, boolean destacado, Integer gramos, String tipo) {
+    public ProductoCrearDTO(String sku, String nombre, BigDecimal precio, Integer stock, Integer categoriaId, String descripcion, String imagenUrl, boolean destacado, Integer gramos, String tipo, String formato) {
         this.sku = sku;
         this.nombre = nombre;
         this.precio = precio;
@@ -29,6 +30,7 @@ public class ProductoCrearDTO {
         this.destacado = destacado;
         this.gramos = gramos;
         this.tipoProducto = tipoProducto;
+        this.formato = formato;
     }
 
     public String getSku() {
@@ -107,8 +109,15 @@ public class ProductoCrearDTO {
         return tipoProducto;
     }
 
-    public void setTipo(TipoProducto tipoProducto) {
+    public void setTipoProducto(TipoProducto tipoProducto) {
         this.tipoProducto = tipoProducto;
     }
+    public String getFormato() {
+        return formato;
+    }
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
 
 }

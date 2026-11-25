@@ -5,15 +5,38 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import proyectoOptativa.tiendaCafe.dto.ProductoCrearDTO;
+import proyectoOptativa.tiendaCafe.dto.ProductoFiltroDTO;
 import proyectoOptativa.tiendaCafe.model.Producto;
 import proyectoOptativa.tiendaCafe.service.ProductoService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 public class ProductoController {
     @Autowired
     private ProductoService productoService;
+
+    //con filtros
+    @GetMapping("/api/productos")
+    public ResponseEntity<List<Producto>> verProductos(@RequestParam(required = false) Integer categoriaId, @RequestParam(required = false) String q,
+                                                       @RequestParam(required = false) BigDecimal precioMin, @RequestParam(required = false) BigDecimal precioMax,
+                                                       @RequestParam(required = false) Boolean soloDisponibles, @RequestParam(required = false) String formato,
+                                                       @RequestParam(required = false) String orden, @RequestParam(required = false ) String direccion) {
+
+        ProductoFiltroDTO productoFiltroDTO = new ProductoFiltroDTO();
+        productoFiltroDTO.setCategoriaId(categoriaId);
+        productoFiltroDTO.setQ(q);
+        productoFiltroDTO.setPrecioMin(precioMin);
+        productoFiltroDTO.setPrecioMax(precioMax);
+        productoFiltroDTO.setSoloDisponibles(soloDisponibles);
+        productoFiltroDTO.setFormato(formato);
+        productoFiltroDTO.setOrden(orden);
+        productoFiltroDTO.setDireccion(direccion);
+
+        List<Producto>productosFiltrados = productoService.filtrarProductos(productoFiltroDTO);
+        return ResponseEntity.ok(productosFiltrados);
+    }
 
     // ver detalles de un producto activo
     @GetMapping("/api/productos/{id}")
@@ -52,10 +75,10 @@ public class ProductoController {
     //modificar un producto
     @PutMapping("/api/admin/productos/{id}")
     public ResponseEntity<Object> modificarProducto(@PathVariable int id,
-                                                    @RequestBody Producto producto){
+                                                    @RequestBody ProductoCrearDTO producto){
 
         Producto existe =  productoService.verDetallesProducto(id);
-        if(existe == null){
+        if(existe == null){ //kitar cuando tengamos excepciones
             return ResponseEntity.notFound().build();
         }
         Producto productoActualizado = productoService.actualizarProducto(producto, id);
