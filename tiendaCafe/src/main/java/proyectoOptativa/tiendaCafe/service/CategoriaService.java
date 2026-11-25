@@ -1,6 +1,7 @@
 package proyectoOptativa.tiendaCafe.service;
 
 import org.springframework.stereotype.Service;
+import proyectoOptativa.tiendaCafe.dto.CategoriaCrearDTO;
 import proyectoOptativa.tiendaCafe.dto.CategoriaDTO;
 import proyectoOptativa.tiendaCafe.model.Categoria;
 import proyectoOptativa.tiendaCafe.model.TipoProducto;
@@ -84,7 +85,7 @@ public class CategoriaService {
     }
 
     // creamos la categoria
-    public CategoriaDTO crearCategoria(CategoriaDTO categoriaDTO) {
+    public CategoriaDTO crearCategoria(CategoriaCrearDTO categoriaDTO) {
         Categoria nuevaCategoria = new Categoria();
         nuevaCategoria.setId(siguienteId++);
         nuevaCategoria.setNombre(categoriaDTO.getNombre());
@@ -94,7 +95,7 @@ public class CategoriaService {
     }
 
     // actualizamos la categoria
-    public CategoriaDTO actualizarCategoria(Integer id, CategoriaDTO categoriaDTO) {
+    public CategoriaDTO actualizarCategoria(Integer id, CategoriaCrearDTO categoriaDTO) {
         Categoria existe = buscarPorId(id);
         if (existe == null) {
             return null;
