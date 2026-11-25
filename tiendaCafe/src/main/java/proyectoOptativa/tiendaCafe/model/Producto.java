@@ -17,10 +17,11 @@ public class Producto {
     private Integer categoriaId;
     private TipoProducto tipoProducto;
     private Integer gramos;
+    private String formato;
 
     public Producto() {}
 
-    public Producto(Integer id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, boolean activo, boolean destacado, LocalDate fechaCreacion, Integer categoriaId, TipoProducto tipoProducto, Integer gramos) {
+    public Producto(Integer id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, boolean activo, boolean destacado, LocalDate fechaCreacion, Integer categoriaId, TipoProducto tipoProducto, Integer gramos, String formato) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -34,6 +35,7 @@ public class Producto {
         this.categoriaId = categoriaId;
         this.tipoProducto = tipoProducto;
         this.gramos = gramos;
+        this.formato = formato;
     }
 
     public Integer getId() {
@@ -139,6 +141,13 @@ public class Producto {
     public void setGramos(Integer gramos) {
         this.gramos = gramos;
     }
+    public String getFormato() {
+        return formato;
+    }
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
 
 }
 
